@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Beaker, Mail, Phone, MapPin, ArrowRight, Globe, Linkedin, Facebook, Twitter } from 'lucide-react';
-import { NAV_ITEMS } from '../constants';
+import { NAV_ITEMS, IMAGES } from '../constants';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,9 +39,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <NavLink to="/" className="flex items-center gap-3 group relative z-50">
-              <div className="size-9 rounded-xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform duration-300">
-                <Beaker size={20} strokeWidth={2.5} className="group-hover:rotate-12 transition-transform duration-500" />
-              </div>
+              <img 
+                src={IMAGES.logo} 
+                alt="Sanlia Chemi Logo" 
+                className="h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              />
               <span className={`text-xl font-black tracking-tight transition-colors ${scrolled || isMobileMenuOpen ? 'text-navy-dark' : 'text-navy-dark'}`}>
                 Sanlia Chemi<span className="text-primary">.</span>
               </span>
@@ -161,9 +163,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             {/* Branding */}
             <div className="lg:col-span-4 space-y-6">
               <div className="flex items-center gap-3 text-white">
-                <div className="size-10 rounded-xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center shadow-lg shadow-primary/20">
-                    <Beaker size={22} strokeWidth={2.5} />
-                </div>
+                <img 
+                  src={IMAGES.logo} 
+                  alt="Sanlia Chemi Logo" 
+                  className="h-10 w-auto object-contain"
+                />
                 <span className="text-2xl font-black tracking-tight">Sanlia Chemi</span>
               </div>
               <p className="text-slate-400 text-base leading-relaxed max-w-sm">

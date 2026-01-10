@@ -1,11 +1,115 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, PlayCircle, BarChart3, Globe, ShieldCheck, HeartHandshake, ArrowUpRight, MapPin, Send, Droplets, FlaskConical, Microscope } from 'lucide-react';
+import { ArrowRight, PlayCircle, BarChart3, Globe, ShieldCheck, HeartHandshake, ArrowUpRight, MapPin, Send, Droplets, FlaskConical, Microscope, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PRODUCTS, IMAGES } from '../constants';
 import { Reveal } from '../components/Reveal';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsToShow, setItemsToShow] = useState(4);
+  const [isPaused, setIsPaused] = useState(false);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+  const autoPlayIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Calculate items to show based on screen size
+  useEffect(() => {
+    const updateItemsToShow = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsToShow(4);
+      } else if (window.innerWidth >= 640) {
+        setItemsToShow(2);
+      } else {
+        setItemsToShow(1);
+      }
+    };
+
+    updateItemsToShow();
+    window.addEventListener('resize', updateItemsToShow);
+    return () => window.removeEventListener('resize', updateItemsToShow);
+  }, []);
+
+  const displayedProducts = PRODUCTS.slice(0, 8);
+  
+  // Auto-play functionality with 2 second interval
+  useEffect(() => {
+    const totalSlides = Math.max(1, Math.ceil(displayedProducts.length / itemsToShow));
+    
+    if (!isPaused && totalSlides > 1) {
+      autoPlayIntervalRef.current = setInterval(() => {
+        setCurrentIndex((prev) => {
+          const next = prev + 1;
+          return next >= totalSlides ? 0 : next;
+        });
+      }, 2000); // 2 seconds (2000ms)
+    }
+
+    return () => {
+      if (autoPlayIntervalRef.current) {
+        clearInterval(autoPlayIntervalRef.current);
+        autoPlayIntervalRef.current = null;
+      }
+    };
+  }, [isPaused, itemsToShow, displayedProducts.length]);
+
+  const pauseAutoPlay = () => {
+    setIsPaused(true);
+    // Resume auto-play after 8 seconds of inactivity
+    setTimeout(() => {
+      setIsPaused(false);
+    }, 8000);
+  };
+  
+  const nextSlide = () => {
+    pauseAutoPlay();
+    const totalSlides = Math.max(1, Math.ceil(displayedProducts.length / itemsToShow));
+    setCurrentIndex((prev) => {
+      const next = prev + 1;
+      return next >= totalSlides ? 0 : next;
+    });
+  };
+
+  const prevSlide = () => {
+    pauseAutoPlay();
+    const totalSlides = Math.max(1, Math.ceil(displayedProducts.length / itemsToShow));
+    setCurrentIndex((prev) => {
+      const prevIndex = prev - 1;
+      return prevIndex < 0 ? totalSlides - 1 : prevIndex;
+    });
+  };
+
+  const goToSlide = (index: number) => {
+    pauseAutoPlay();
+    setCurrentIndex(index);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
+
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
 
   return (
     <div className="w-full overflow-hidden">
@@ -27,7 +131,7 @@ const Home: React.FC = () => {
               </Reveal>
               
               <Reveal delay={0.1}>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-navy-dark leading-[1.05] tracking-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-dark leading-[1.05] tracking-tight">
                     Химийн нийлүүлэлтийн <br/>
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">тэргүүлэгч түнш</span>
                 </h1>
@@ -163,14 +267,14 @@ const Home: React.FC = () => {
       </section>
 
       {/* Solutions / Products Preview */}
-      <section className="w-full bg-background-light py-24 relative">
+      <section className="w-full bg-background-light py-24 relative overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
             <Reveal>
                 <h2 className="text-4xl lg:text-5xl font-bold text-navy-dark">Онцлох<br/>Бүтээгдэхүүнүүд</h2>
             </Reveal>
             <Reveal delay={0.1}>
-                <div className="flex gap-4">
+                <div className="flex gap-4 items-center">
                     <button 
                         onClick={() => navigate('/products')}
                         className="flex items-center gap-2 text-navy-dark font-bold hover:text-primary transition-colors group"
@@ -184,40 +288,106 @@ const Home: React.FC = () => {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {PRODUCTS.slice(0, 4).map((product, i) => (
-              <Reveal key={product.id} delay={i * 0.1}>
-                  <div 
-                    className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer border border-slate-100 hover:border-primary/20 flex flex-col h-full" 
-                    onClick={() => navigate('/products')}
+          {/* Slider Container */}
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 sm:p-3 shadow-lg border border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 group disabled:opacity-30 disabled:cursor-not-allowed"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} className="sm:w-6 sm:h-6 group-hover:-translate-x-0.5 transition-transform" />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 sm:p-3 shadow-lg border border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 group disabled:opacity-30 disabled:cursor-not-allowed"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} className="sm:w-6 sm:h-6 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+
+            {/* Slider Wrapper */}
+            <div 
+              ref={containerRef}
+              className="overflow-hidden relative"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div 
+                ref={sliderRef}
+                className="flex transition-transform duration-500 ease-in-out gap-6 lg:gap-8"
+                style={{
+                  transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`
+                }}
+              >
+                {displayedProducts.map((product, i) => (
+                  <div
+                    key={product.id}
+                    className="flex-shrink-0"
+                    style={{ 
+                      width: itemsToShow === 4 
+                        ? 'calc(25% - 18px)' 
+                        : itemsToShow === 2 
+                          ? 'calc(50% - 12px)' 
+                          : '100%',
+                      minWidth: 0 
+                    }}
                   >
-                    <div className="h-64 w-full bg-slate-200 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-navy-dark/10 group-hover:bg-transparent transition-colors z-10"></div>
-                    <div className="absolute top-4 left-4 z-20 flex gap-2 max-w-[80%]">
-                        <span className="bg-white/90 backdrop-blur-md text-navy-dark text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-sm truncate">
-                            {product.category}
-                        </span>
-                    </div>
-                    <div 
-                        className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                        style={{ backgroundImage: `url("${product.image}")` }}
-                    ></div>
-                    </div>
-                    <div className="p-6 flex-1 flex flex-col">
-                        <div className="flex justify-between items-start mb-3">
+                    <Reveal delay={i * 0.05}>
+                      <div 
+                        className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer border border-slate-100 hover:border-primary/20 flex flex-col h-full" 
+                        onClick={() => navigate('/products')}
+                      >
+                        <div className="h-64 w-full bg-slate-200 overflow-hidden relative">
+                          <div className="absolute inset-0 bg-navy-dark/10 group-hover:bg-transparent transition-colors z-10"></div>
+                          <div className="absolute top-4 left-4 z-20 flex gap-2 max-w-[80%]">
+                            <span className="bg-white/90 backdrop-blur-md text-navy-dark text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-sm truncate">
+                              {product.category}
+                            </span>
+                          </div>
+                          <div 
+                            className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                            style={{ backgroundImage: `url("${product.image}")` }}
+                          ></div>
+                        </div>
+                        <div className="p-6 flex-1 flex flex-col">
+                          <div className="flex justify-between items-start mb-3">
                             <h3 className="text-xl font-bold text-navy-dark group-hover:text-primary transition-colors">{product.name}</h3>
                             <ArrowUpRight size={20} className="text-slate-300 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-                        </div>
-                        <p className="text-sm text-slate-500 mb-5 line-clamp-2 leading-relaxed">{product.description}</p>
-                        <div className="mt-auto flex flex-wrap gap-2">
-                            {product.tags.map(tag => (
-                                <span key={tag} className="px-2.5 py-1 bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider rounded-md border border-slate-100 group-hover:border-primary/20 group-hover:text-primary group-hover:bg-primary/5 transition-all">{tag}</span>
+                          </div>
+                          <p className="text-sm text-slate-500 mb-5 line-clamp-2 leading-relaxed">{product.description}</p>
+                          <div className="mt-auto flex flex-wrap gap-2">
+                            {product.tags.slice(0, 3).map(tag => (
+                              <span key={tag} className="px-2.5 py-1 bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider rounded-md border border-slate-100 group-hover:border-primary/20 group-hover:text-primary group-hover:bg-primary/5 transition-all">{tag}</span>
                             ))}
+                          </div>
                         </div>
-                    </div>
+                      </div>
+                    </Reveal>
                   </div>
-              </Reveal>
-            ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {Array.from({ length: Math.max(1, Math.ceil(displayedProducts.length / itemsToShow)) }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? 'bg-primary w-8'
+                      : 'bg-gray-300 w-2 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
