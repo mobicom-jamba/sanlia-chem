@@ -1,0 +1,318 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowRight, PlayCircle, BarChart3, Globe, ShieldCheck, HeartHandshake, ArrowUpRight, MapPin, Send, Droplets, FlaskConical, Microscope } from 'lucide-react';
+import { PRODUCTS, IMAGES } from '../constants';
+import { Reveal } from '../components/Reveal';
+
+const Home: React.FC = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="w-full overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[90vh] flex items-center bg-background-light overflow-hidden pt-20">
+        {/* Abstract Background Shapes */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-primary/20 to-transparent rounded-full blur-[120px] translate-x-1/3 -translate-y-1/4 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-accent/10 to-transparent rounded-full blur-[100px] -translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
+
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Text Content */}
+            <div className="flex flex-col gap-8 max-w-2xl">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 shadow-sm text-primary w-fit hover:shadow-md transition-shadow cursor-default">
+                    <ShieldCheck size={18} className="animate-pulse" />
+                    <span className="text-xs font-bold uppercase tracking-wide">MNS 6458:2014 Стандарт</span>
+                </div>
+              </Reveal>
+              
+              <Reveal delay={0.1}>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-navy-dark leading-[1.05] tracking-tight">
+                    Химийн нийлүүлэлтийн <br/>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">тэргүүлэгч түнш</span>
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.2}>
+                <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-lg font-medium">
+                    Монголын үйлдвэрлэлд олон улсын стандарт, аюулгүй хангамж
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.3}>
+                <div className="flex flex-wrap gap-4 mt-2">
+                    <button 
+                    onClick={() => navigate('/products')}
+                    className="group bg-navy-dark hover:bg-primary text-white h-14 px-8 rounded-full text-base font-bold transition-all duration-300 shadow-xl shadow-navy-dark/20 hover:shadow-primary/30 flex items-center gap-2 hover:-translate-y-1"
+                    >
+                    Каталог үзэх
+                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                    <button 
+                    onClick={() => navigate('/about')}
+                    className="group bg-white border border-slate-200 hover:border-primary/30 text-slate-700 hover:text-primary h-14 px-8 rounded-full text-base font-bold transition-all duration-300 shadow-sm hover:shadow-lg flex items-center gap-3 hover:-translate-y-1"
+                    >
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping opacity-0 group-hover:opacity-100"></div>
+                        <PlayCircle size={24} className="relative z-10" />
+                    </div>
+                    Бидний тухай
+                    </button>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.4}>
+                <div className="flex items-center gap-8 pt-4 border-t border-slate-200/60">
+                    <div>
+                        <p className="text-3xl font-bold text-navy-dark">13+</p>
+                        <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mt-1">Жилийн туршлага</p>
+                    </div>
+                    <div className="w-px h-10 bg-slate-200"></div>
+                    <div>
+                        <p className="text-3xl font-bold text-navy-dark">400+</p>
+                        <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mt-1">Нэр төрлийн бүтээгдэхүүн</p>
+                    </div>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Visual */}
+            <Reveal direction="left" delay={0.2}>
+                <div className="relative h-[500px] lg:h-[650px] w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-dark/20 bg-slate-900 group select-none">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-navy-dark/60 via-transparent to-transparent z-10"></div>
+                    <div 
+                        className="w-full h-full bg-cover bg-center transition-transform duration-[2s] ease-out group-hover:scale-110"
+                        style={{ backgroundImage: `url("${IMAGES.hero_molecule}")` }}
+                    ></div>
+                    
+                    {/* Floating Cards */}
+                    <div className="absolute top-10 right-8 z-20 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-2xl animate-bounce duration-[3000ms]">
+                        <FlaskConical size={32} className="text-accent" />
+                    </div>
+
+                    <div className="absolute bottom-12 left-8 z-20 bg-white/90 backdrop-blur-md border border-white/50 p-5 rounded-2xl max-w-[240px] shadow-xl hover:scale-105 transition-transform duration-300">
+                        <div className="flex items-center gap-3 mb-3">
+                        <div className="bg-primary/10 p-2.5 rounded-xl text-primary">
+                            <BarChart3 size={20} />
+                        </div>
+                        <span className="text-navy-dark text-xs font-bold uppercase">Чанар</span>
+                        </div>
+                        <div className="flex items-end gap-2 mb-1">
+                            <p className="text-navy-dark font-black text-3xl">100%</p>
+                        </div>
+                        <p className="text-slate-500 text-xs font-medium leading-tight">Стандартын шаардлага хангасан бүтээгдэхүүн</p>
+                    </div>
+                </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="w-full bg-navy-dark text-white py-24 lg:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/10 blur-[150px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-0 left-10 w-64 h-64 bg-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
+            <Reveal>
+                <div className="max-w-xl">
+                    <h2 className="text-accent text-sm font-bold uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <span className="w-8 h-px bg-accent"></span>
+                        Бидний давуу тал
+                    </h2>
+                    <h3 className="text-3xl md:text-5xl font-bold leading-tight">
+                        Найдвартай нийлүүлэлт,<br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Мэргэжлийн баг.</span>
+                    </h3>
+                </div>
+            </Reveal>
+            <Reveal delay={0.2}>
+                <p className="text-slate-400 max-w-sm text-base leading-relaxed border-l border-white/10 pl-6">
+                    Салбартаа 13+ жил ажилласан туршлагатай мэргэжлийн боловсон хүчинтэй, химийн бодисыг стандартын дагуу нийлүүлдэг.
+                </p>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+                { icon: Globe, title: 'Чанарын баталгаа', desc: 'Химийн бодисыг хүлээлгэн өгөхдөө яаж харьцах талаар зааварчилгаа өгч, чанарыг нь хангаж өгдөг.', color: 'text-blue-400' },
+                { icon: Microscope, title: 'Уян хатан нөхцөл', desc: 'Бид гэрээний дагуу химийн бодис нийлүүлэх төлбөрийн уян хатан үйлчилгээг үзүүлж байна.', color: 'text-accent' },
+                { icon: ShieldCheck, title: 'Аюулгүй байдал', desc: 'Химийн бодисын хадгалалт, тээвэрлэлтийн аюулгүй байдлын стандартыг бүрэн хангасан.', color: 'text-purple-400' },
+            ].map((item, i) => (
+                <Reveal key={i} delay={i * 0.15}>
+                    <div className="group h-full p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500 hover:-translate-y-2 hover:bg-white/10 relative overflow-hidden">
+                        <div className={`absolute top-0 right-0 p-32 bg-${item.color === 'text-blue-400' ? 'blue-500' : item.color === 'text-accent' ? 'emerald-500' : 'purple-500'}/10 blur-[60px] rounded-full -mr-16 -mt-16 pointer-events-none group-hover:bg-opacity-20 transition-all`}></div>
+                        
+                        <div className="relative z-10">
+                            <div className="size-14 rounded-2xl bg-white/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/20 border border-white/5">
+                                <item.icon className={`${item.color}`} size={30} />
+                            </div>
+                            <h4 className="text-2xl font-bold mb-4">{item.title}</h4>
+                            <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-200 transition-colors">{item.desc}</p>
+                            
+                            <div className="mt-8 pt-6 border-t border-white/5 flex items-center gap-2 text-sm font-bold text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                Дэлгэрэнгүй <ArrowRight size={16} />
+                            </div>
+                        </div>
+                    </div>
+                </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions / Products Preview */}
+      <section className="w-full bg-background-light py-24 relative">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+            <Reveal>
+                <h2 className="text-4xl lg:text-5xl font-bold text-navy-dark">Онцлох<br/>Бүтээгдэхүүнүүд</h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+                <div className="flex gap-4">
+                    <button 
+                        onClick={() => navigate('/products')}
+                        className="flex items-center gap-2 text-navy-dark font-bold hover:text-primary transition-colors group"
+                    >
+                        Бүх бүтээгдэхүүнийг үзэх
+                        <span className="bg-white p-2 rounded-full border border-gray-200 group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
+                            <ArrowRight size={20} />
+                        </span>
+                    </button>
+                </div>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {PRODUCTS.slice(0, 4).map((product, i) => (
+              <Reveal key={product.id} delay={i * 0.1}>
+                  <div 
+                    className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer border border-slate-100 hover:border-primary/20 flex flex-col h-full" 
+                    onClick={() => navigate('/products')}
+                  >
+                    <div className="h-64 w-full bg-slate-200 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-navy-dark/10 group-hover:bg-transparent transition-colors z-10"></div>
+                    <div className="absolute top-4 left-4 z-20 flex gap-2 max-w-[80%]">
+                        <span className="bg-white/90 backdrop-blur-md text-navy-dark text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-sm truncate">
+                            {product.category}
+                        </span>
+                    </div>
+                    <div 
+                        className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                        style={{ backgroundImage: `url("${product.image}")` }}
+                    ></div>
+                    </div>
+                    <div className="p-6 flex-1 flex flex-col">
+                        <div className="flex justify-between items-start mb-3">
+                            <h3 className="text-xl font-bold text-navy-dark group-hover:text-primary transition-colors">{product.name}</h3>
+                            <ArrowUpRight size={20} className="text-slate-300 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                        </div>
+                        <p className="text-sm text-slate-500 mb-5 line-clamp-2 leading-relaxed">{product.description}</p>
+                        <div className="mt-auto flex flex-wrap gap-2">
+                            {product.tags.map(tag => (
+                                <span key={tag} className="px-2.5 py-1 bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider rounded-md border border-slate-100 group-hover:border-primary/20 group-hover:text-primary group-hover:bg-primary/5 transition-all">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                  </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="w-full bg-white relative">
+        <div className="grid lg:grid-cols-2 min-h-[700px]">
+          <div className="relative w-full h-[400px] lg:h-auto bg-slate-100 overflow-hidden">
+             <div className="absolute inset-0 bg-navy-dark/80 z-10"></div>
+             <div 
+                className="w-full h-full bg-cover bg-center opacity-60 scale-105"
+                style={{ backgroundImage: `url("${IMAGES.map_bg}")` }}
+             ></div>
+             
+             {/* Map Decoration */}
+             <div className="absolute inset-0 z-20 flex items-center justify-center p-8">
+               <div className="w-full max-w-md">
+                   <Reveal>
+                        <div className="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 shadow-2xl">
+                            <div className="flex items-start gap-4 mb-6">
+                                <div className="bg-primary p-3 rounded-2xl shadow-lg shadow-primary/30 text-white">
+                                    <MapPin size={24} />
+                                </div>
+                                <div>
+                                    <p className="font-bold text-white text-lg">Төв оффис</p>
+                                    <p className="text-sm text-slate-300 mt-1">Улаанбаатар, Баянзүрх дүүрэг,<br/>18-р хороо, 13-р хороолол,<br/>Манлайбаатар Дамдинсүрэнгийн гудамж,<br/>Мичид центр 19/1, 6 давхар, офис 603</p>
+                                </div>
+                            </div>
+                            <div className="space-y-4 pt-6 border-t border-white/10">
+                                <div className="flex items-center gap-3 text-slate-300">
+                                    <div className="size-2 rounded-full bg-accent"></div>
+                                    <span className="text-sm">Даваа - Баасан: 09:00 - 18:00</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-slate-300">
+                                    <div className="size-2 rounded-full bg-red-400"></div>
+                                    <span className="text-sm">Бямба - Ням: Амарна</span>
+                                </div>
+                            </div>
+                        </div>
+                   </Reveal>
+               </div>
+             </div>
+          </div>
+          
+          <div className="p-8 lg:p-24 flex flex-col justify-center bg-white relative">
+            <Reveal direction="right">
+                <div className="mb-10">
+                <h2 className="text-4xl font-bold text-navy-dark mb-4">Бидэнтэй холбогдох</h2>
+                <p className="text-slate-500 text-lg">Тодорхой химийн бодисын шаардлага байна уу? Маягтыг бөглөнө үү, манай баг 24 цагийн дотор тантай холбогдох болно.</p>
+                </div>
+                
+                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2 group">
+                    <label className="text-xs font-bold uppercase text-slate-500 tracking-wide group-focus-within:text-primary transition-colors">Овог Нэр</label>
+                    <input type="text" placeholder="Таны нэр" className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all bg-slate-50 hover:bg-white focus:bg-white" />
+                    </div>
+                    <div className="space-y-2 group">
+                    <label className="text-xs font-bold uppercase text-slate-500 tracking-wide group-focus-within:text-primary transition-colors">Имэйл Хаяг</label>
+                    <input type="email" placeholder="ner@company.com" className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all bg-slate-50 hover:bg-white focus:bg-white" />
+                    </div>
+                </div>
+                
+                <div className="space-y-2 group">
+                    <label className="text-xs font-bold uppercase text-slate-500 tracking-wide group-focus-within:text-primary transition-colors">Сонирхож буй бүтээгдэхүүн</label>
+                    <div className="relative">
+                        <select className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all bg-slate-50 hover:bg-white focus:bg-white text-slate-700 appearance-none cursor-pointer">
+                        <option>Бүтээгдэхүүний ангилал сонгох</option>
+                        <option>Уул уурхайн химийн бодис</option>
+                        <option>Хүнсний нэмэлтүүд</option>
+                        <option>Барилгын материал</option>
+                        <option>Бусад</option>
+                        </select>
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                            <ArrowRight size={16} className="rotate-90" />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="space-y-2 group">
+                    <label className="text-xs font-bold uppercase text-slate-500 tracking-wide group-focus-within:text-primary transition-colors">Зурвас</label>
+                    <textarea rows={4} placeholder="Шаардлага болон тоо хэмжээний талаар бичнэ үү..." className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all bg-slate-50 hover:bg-white focus:bg-white resize-none"></textarea>
+                </div>
+
+                <button type="submit" className="w-full bg-navy-dark hover:bg-primary text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-xl shadow-navy-dark/20 hover:shadow-primary/30 flex justify-center items-center gap-3 group hover:-translate-y-1">
+                    <span>Илгээх</span>
+                    <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </button>
+                </form>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
