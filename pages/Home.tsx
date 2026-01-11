@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, PlayCircle, BarChart3, Globe, ShieldCheck, HeartHandshake, ArrowUpRight, MapPin, Send, Droplets, FlaskConical, Microscope, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, PlayCircle, BarChart3, Globe, ShieldCheck, HeartHandshake, ArrowUpRight, MapPin, Send, Droplets, FlaskConical, Microscope, ChevronLeft, ChevronRight, Award, Sparkles } from 'lucide-react';
 import { PRODUCTS, IMAGES } from '../constants';
 import { Reveal } from '../components/Reveal';
 
@@ -182,59 +182,110 @@ const Home: React.FC = () => {
 
             {/* Visual */}
             <Reveal direction="left" delay={0.2}>
-                <div className="relative h-[350px] sm:h-[450px] md:h-[500px] lg:h-[650px] w-full rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10 group select-none mt-8 lg:mt-0 bg-gradient-to-br from-primary/5 via-background-light to-accent/5">
-                    {/* Animated Background Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 animate-gradient-shift"></div>
+                <div className="relative h-[350px] sm:h-[450px] md:h-[500px] lg:h-[650px] w-full rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_-15px_rgba(19,91,236,0.15)] group select-none mt-8 lg:mt-0 isolate">
+                    {/* Sophisticated Background Layers */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
                     
-                    {/* Glow Effects */}
-                    <div className="absolute -top-20 -right-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                    <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-accent/20 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                    {/* Animated Orbital Glows */}
+                    <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-110"></div>
+                    <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-tr from-blue-400/20 via-primary/10 to-transparent rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-110"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl opacity-30"></div>
                     
-                    {/* Image Container with Transparency Support */}
-                    <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-8 lg:p-12 z-10">
+                    {/* Elegant Grid Pattern Overlay */}
+                    <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#135bec_1px,transparent_1px),linear-gradient(to_bottom,#135bec_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+                    
+                    {/* Image Container - Premium Positioning */}
+                    <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-10 lg:p-16 z-10">
                         <div 
-                            className="w-full h-full bg-contain bg-center bg-no-repeat transition-all duration-[2s] ease-out group-hover:scale-105 group-hover:brightness-110"
+                            className="w-full h-full max-w-4xl bg-contain bg-center bg-no-repeat transition-all duration-[3s] ease-out group-hover:scale-[1.03] filter group-hover:drop-shadow-2xl"
                             style={{ backgroundImage: `url("${IMAGES.home_banner}")` }}
                         ></div>
                     </div>
                     
-                    {/* Subtle Gradient Overlay for Depth */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/30 via-transparent to-transparent z-10 pointer-events-none"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary/5 z-10 pointer-events-none"></div>
+                    {/* Refined Gradient Overlays for Depth */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/20 via-transparent to-transparent z-10 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/5 z-10 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-transparent z-10 pointer-events-none"></div>
                     
-                    {/* Shine Effect on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-1000 z-10 pointer-events-none"></div>
+                    {/* Premium Shine Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-[1.5s] ease-in-out z-10 pointer-events-none"></div>
                     
-                    {/* Floating Cards with Enhanced Design */}
-                    <div className="absolute top-4 right-4 sm:top-10 sm:right-8 z-30 bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl border border-white/30 p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-2xl shadow-primary/20 animate-bounce duration-[3000ms] hidden sm:block group-hover:shadow-primary/40 transition-shadow">
+                    {/* Elegant Floating Premium Icon Card - Top Right */}
+                    <div className="absolute top-6 right-6 sm:top-12 sm:right-12 z-30 hidden sm:block">
                         <div className="relative">
-                            <div className="absolute inset-0 bg-primary/20 rounded-xl blur-xl opacity-50"></div>
-                            <FlaskConical size={24} className="sm:w-8 sm:h-8 text-accent relative z-10 drop-shadow-lg" />
+                            {/* Premium Glow Ring */}
+                            <div className="absolute -inset-1 bg-gradient-to-r from-primary/40 via-blue-400/40 to-primary/40 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            
+                            {/* Premium Glass Card */}
+                            <div className="relative bg-gradient-to-br from-white/40 via-white/30 to-white/20 backdrop-blur-2xl border border-white/40 rounded-2xl p-4 shadow-[0_8px_32px_rgba(19,91,236,0.15)] group-hover:shadow-[0_12px_48px_rgba(19,91,236,0.25)] transition-all duration-500 hover:scale-105">
+                                {/* Inner Glow */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-50"></div>
+                                
+                                {/* Premium Award Icon */}
+                                <div className="relative z-10 flex items-center justify-center">
+                                    {/* Sparkle Effect */}
+                                    <div className="absolute -top-1 -right-1">
+                                        <Sparkles size={10} className="text-primary animate-pulse" />
+                                    </div>
+                                    
+                                    {/* Award Icon with Premium Styling */}
+                                    <div className="relative">
+                                        {/* Outer Glow */}
+                                        <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg"></div>
+                                        {/* Icon */}
+                                        <Award size={32} className="relative z-10 text-primary drop-shadow-[0_4px_12px_rgba(19,91,236,0.3)]" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Enhanced Stats Card */}
-                    <div className="absolute bottom-4 left-4 sm:bottom-12 sm:left-8 z-30 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-xl border border-white/60 p-3 sm:p-5 rounded-xl sm:rounded-2xl max-w-[200px] sm:max-w-[240px] shadow-2xl shadow-primary/10 hover:shadow-primary/20 hover:scale-105 transition-all duration-300 group/card">
-                        {/* Glow effect on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 rounded-xl opacity-0 group-hover/card:opacity-20 transition-opacity duration-300 blur-xl"></div>
-                        
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                            <div className="bg-gradient-to-br from-primary/20 to-primary/10 p-2 sm:p-2.5 rounded-lg sm:rounded-xl text-primary shadow-sm shadow-primary/20">
-                                <BarChart3 size={16} className="sm:w-5 sm:h-5" />
+                    {/* Premium Stats Card - Bottom Left */}
+                    <div className="absolute bottom-6 left-6 sm:bottom-12 sm:left-12 z-30 max-w-[220px] sm:max-w-[280px]">
+                        <div className="relative group/card">
+                            {/* Outer Glow */}
+                            <div className="absolute -inset-0.5 bg-gradient-to-br from-primary/30 via-primary/20 to-blue-400/30 rounded-3xl blur-lg opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
+                            
+                            {/* Premium Glass Card */}
+                            <div className="relative bg-gradient-to-br from-white/95 via-white/90 to-white/85 backdrop-blur-2xl border border-white/70 rounded-3xl p-5 sm:p-6 shadow-[0_20px_60px_-12px_rgba(0,0,0,0.15)] group-hover/card:shadow-[0_25px_80px_-12px_rgba(19,91,236,0.25)] transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1">
+                                {/* Subtle Inner Glow */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
+                                
+                                {/* Content */}
+                                <div className="relative z-10">
+                                    {/* Icon Badge */}
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="relative">
+                                            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl blur-md"></div>
+                                            <div className="relative bg-gradient-to-br from-primary/20 to-primary/5 p-2.5 sm:p-3 rounded-xl border border-primary/20 shadow-sm">
+                                                <BarChart3 size={20} className="sm:w-6 sm:h-6 text-primary" />
+                                            </div>
+                                        </div>
+                                        <span className="text-navy-dark text-xs sm:text-sm font-bold uppercase tracking-wider">Чанар</span>
+                                    </div>
+                                    
+                                    {/* Stats Number */}
+                                    <div className="mb-2">
+                                        <p className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-blue-500 to-primary font-black text-3xl sm:text-4xl leading-none">
+                                            100%
+                                        </p>
+                                    </div>
+                                    
+                                    {/* Description */}
+                                    <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed">
+                                        Стандартын шаардлага хангасан бүтээгдэхүүн
+                                    </p>
+                                </div>
                             </div>
-                            <span className="text-navy-dark text-[10px] sm:text-xs font-bold uppercase">Чанар</span>
-                            </div>
-                            <div className="flex items-end gap-2 mb-1">
-                                <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-black text-2xl sm:text-3xl">100%</p>
-                            </div>
-                            <p className="text-slate-500 text-[10px] sm:text-xs font-medium leading-tight">Стандартын шаардлага хангасан бүтээгдэхүүн</p>
                         </div>
                     </div>
                     
-                    {/* Decorative Corner Accents */}
-                    <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-br-[2rem] z-0"></div>
-                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-accent/10 to-transparent rounded-tl-[2rem] z-0"></div>
+                    {/* Refined Corner Accents */}
+                    <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-primary/8 via-primary/4 to-transparent rounded-br-[2.5rem] z-0"></div>
+                    <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-blue-400/8 via-blue-400/4 to-transparent rounded-tl-[2.5rem] z-0"></div>
+                    
+                    {/* Subtle Border Glow */}
+                    <div className="absolute inset-0 rounded-3xl sm:rounded-[2.5rem] border border-white/20 pointer-events-none"></div>
                 </div>
             </Reveal>
           </div>
