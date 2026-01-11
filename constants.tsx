@@ -4,6 +4,7 @@ import { Product, NavItem } from './types';
 export const IMAGES = {
   logo: "/images/products/logo.png",
   hero_molecule: "https://lh3.googleusercontent.com/aida-public/AB6AXuDGwP2u8B1nge5jJhB2jUGVfphuN7Pfl5csGMP-Ofz_q-H0vhtfGQwWRJcF3AjrMKYPTSIY0U220h9PDAormKpYgi8OgTxll83H38tr_Ln3txU3veVkYh7PeWuSxDycktPQFerllqLgks5z2f5BwwUOSfbCuGxvNHD7cCvr0wNbKg_MgnH0wwB6exrx3ZR1Ywpqr2ffylOf6zFnUBF4iCWbFjcQX09uAn72V5zLVdLdhAalGyAmQdrRAWiR5EOcprRnHEF7wen4Z9w",
+  home_banner: "/images/products/home-banner.png",
   // Bulk/Industrial images
   ibc_tote: "https://lh3.googleusercontent.com/aida-public/AB6AXuDnsiJHC6JrQEWlf_ELvBADqf1XReHvXq4av6jNKEsabqjuU03CaaSH0ULEAUNDtvvp3iqU2PKoXNpq_qGv-gT2ltJIr4iidGe-7AZxLrPkEyf9BMzOPYkOsXVSjrpS9AYQ0llQbCh1QXic8DDSpa1TBEfXuA4ibBbiM6j8OmAibnZ2kYKcIjJ5CvH0DbQT5p5gkPKagQf67JcDoyU2NQiD3dJPJqTWNLaGSF9kzMGHhcpFDNclKohesUw7WMQwQPe2jRqdgSNEdFI",
   white_bags: "https://lh3.googleusercontent.com/aida-public/AB6AXuDWznwWY9PZfdTlElihVXDhdk3hzRaW_KkS4KyeO4vNE9-xZZRF7p4-ZUCr-VU099j2xhs8Nqk2p1Bdm_DGXDkmhzRV1WUnaVV0_4N1RgM-4WQREt07qnKUpVMW-fAYUhHK0djT5crbLoyp_0yuWmF1taz3YOvZRn-4XAJskzdQFB2so7QxOdLrxvsHjx1L-QTQJhPdQkE5Gypz0joEtPaCn8YV7eYO_nYXwFmOEBzfmVDRm7pcinq0Ox_Z3-8rfOLfshFCSU4wGLs",

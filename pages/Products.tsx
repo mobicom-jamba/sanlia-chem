@@ -114,16 +114,16 @@ const Products: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full flex-grow">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 w-full flex-grow">
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12">
           
           {/* Sidebar */}
-          <aside className={`fixed inset-y-0 left-0 z-50 w-80 bg-white p-6 shadow-2xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:w-72 lg:p-0 lg:shadow-none lg:bg-transparent ${isMobileFiltersOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-            <div className="lg:sticky lg:top-28 space-y-6 h-full overflow-y-auto lg:h-auto lg:overflow-visible pb-20 lg:pb-0">
-              <div className="flex justify-between items-center lg:hidden mb-6">
-                 <h2 className="text-xl font-bold text-navy-dark">Шүүлтүүр</h2>
-                 <button onClick={() => setIsMobileFiltersOpen(false)} className="p-2 text-slate-500 hover:bg-slate-100 rounded-full">
-                    <X size={24} />
+          <aside className={`fixed inset-y-0 left-0 z-50 w-full max-w-sm bg-white p-4 sm:p-6 shadow-2xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:w-72 lg:max-w-none lg:p-0 lg:shadow-none lg:bg-transparent ${isMobileFiltersOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div className="lg:sticky lg:top-28 space-y-4 sm:space-y-6 h-full overflow-y-auto lg:h-auto lg:overflow-visible pb-20 lg:pb-0">
+              <div className="flex justify-between items-center lg:hidden mb-4 sm:mb-6">
+                 <h2 className="text-lg sm:text-xl font-bold text-navy-dark">Шүүлтүүр</h2>
+                 <button onClick={() => setIsMobileFiltersOpen(false)} className="p-2 text-slate-500 hover:bg-slate-100 rounded-full active:scale-95 transition-transform">
+                    <X size={22} className="sm:w-6 sm:h-6" />
                  </button>
               </div>
 
@@ -134,26 +134,26 @@ const Products: React.FC = () => {
                     placeholder="Хайх..." 
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                    className="w-full pl-9 sm:pl-10 pr-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm sm:text-base"
                 />
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                <Search className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4 sm:w-[18px] sm:h-[18px]" />
                 {searchQuery && (
-                    <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-navy-dark">
+                    <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-navy-dark active:scale-95">
                         <X size={14} />
                     </button>
                 )}
               </div>
               
               <div className="flex justify-between items-center">
-                 <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Идэвхтэй шүүлтүүрүүд</span>
+                 <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wide">Идэвхтэй шүүлтүүрүүд</span>
                  {(selectedCategories.length > 0 || selectedTags.length > 0 || searchQuery) && (
-                    <button onClick={clearAllFilters} className="text-xs font-bold text-primary hover:text-primary-hover hover:underline">
+                    <button onClick={clearAllFilters} className="text-[10px] sm:text-xs font-bold text-primary hover:text-primary-hover hover:underline active:scale-95">
                         Цэвэрлэх
                     </button>
                  )}
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+              <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-200 shadow-sm">
                 <h3 className="text-base font-bold text-navy-dark mb-4 flex items-center gap-2 border-b border-gray-100 pb-2">
                   <Factory size={18} className="text-primary" />
                   Ангилал
@@ -208,21 +208,21 @@ const Products: React.FC = () => {
 
           {/* Main Grid */}
           <main className="flex-1">
-            <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4 bg-white p-4 rounded-xl border border-gray-200 shadow-sm sticky top-20 z-30">
-              <div className="flex items-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-3 sm:gap-4 bg-white p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm sticky top-16 sm:top-20 z-30">
+              <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
                   <button 
                     onClick={() => setIsMobileFiltersOpen(true)}
-                    className="lg:hidden p-2 bg-slate-100 rounded-lg text-slate-600 hover:text-primary hover:bg-slate-200 transition-colors"
+                    className="lg:hidden p-2 bg-slate-100 rounded-lg text-slate-600 hover:text-primary hover:bg-slate-200 transition-colors active:scale-95"
                   >
-                      <Filter size={20} />
+                      <Filter size={18} className="sm:w-5 sm:h-5" />
                   </button>
-                  <p className="text-slate-500 text-sm font-medium whitespace-nowrap">
+                  <p className="text-slate-500 text-xs sm:text-sm font-medium whitespace-nowrap">
                       <span className="font-bold text-navy-dark">{filteredProducts.length}</span> бүтээгдэхүүн
                   </p>
               </div>
-              <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-                <span className="text-sm text-slate-500 font-medium hidden sm:inline">Эрэмбэлэх:</span>
-                <select className="border-none bg-slate-50 rounded-lg text-sm text-slate-700 py-2 pl-3 pr-8 focus:ring-2 focus:ring-primary/20 font-bold cursor-pointer w-full sm:w-auto">
+              <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-end">
+                <span className="text-xs sm:text-sm text-slate-500 font-medium hidden sm:inline">Эрэмбэлэх:</span>
+                <select className="border-none bg-slate-50 rounded-lg text-xs sm:text-sm text-slate-700 py-2 pl-3 pr-7 sm:pr-8 focus:ring-2 focus:ring-primary/20 font-bold cursor-pointer w-full sm:w-auto">
                   <option>Шинэ нь эхэндээ</option>
                   <option>А-Я</option>
                   <option>Я-А</option>
@@ -236,7 +236,7 @@ const Products: React.FC = () => {
                     <p className="text-slate-400 text-sm font-medium mt-4 animate-pulse">Бүтээгдэхүүнийг ачаалж байна...</p>
                 </div>
             ) : filteredProducts.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
                 {filteredProducts.map((product, index) => (
                     <Reveal key={product.id} delay={index * 0.05}>
                         <div 

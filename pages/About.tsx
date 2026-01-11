@@ -9,7 +9,7 @@ const About: React.FC = () => {
   return (
     <div className="w-full overflow-hidden">
         {/* Header */}
-        <section className="relative w-full h-[50vh] min-h-[400px] bg-navy-dark overflow-hidden flex items-center justify-center pt-20">
+        <section className="relative w-full h-[40vh] sm:h-[50vh] min-h-[300px] sm:min-h-[400px] bg-navy-dark overflow-hidden flex items-center justify-center pt-20">
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-40 grayscale mix-blend-overlay"
               style={{ backgroundImage: `url("${IMAGES.hero_molecule}")` }}
@@ -17,12 +17,12 @@ const About: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy-dark/80 to-navy-dark"></div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 to-transparent opacity-50"></div>
             
-            <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <div className="relative z-10 text-center px-4 max-w-4xl mx-auto py-8 sm:py-0">
                 <Reveal>
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight">Бидний тухай</h1>
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 tracking-tight">Бидний тухай</h1>
                 </Reveal>
                 <Reveal delay={0.2}>
-                    <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-light max-w-2xl mx-auto">
+                    <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-light max-w-2xl mx-auto px-2">
                         Химийн бодисын худалдаа, ханган нийлүүлэлт, аюулгүй ажиллагааны сургалтыг мэргэжлийн түвшинд явуулдаг тэргүүлэгч компани.
                     </p>
                 </Reveal>
@@ -30,21 +30,21 @@ const About: React.FC = () => {
         </section>
 
         {/* Overview */}
-        <section className="py-20 lg:py-32 bg-white relative">
+        <section className="py-12 sm:py-20 lg:py-32 bg-white relative">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-24 items-center">
                     <div>
                         <Reveal>
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-primary w-fit mb-8 border border-blue-100">
-                                <History size={16} />
-                                <span className="text-xs font-bold uppercase tracking-wide">Компанийн тойм</span>
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-primary w-fit mb-6 sm:mb-8 border border-blue-100">
+                                <History size={14} className="sm:w-4 sm:h-4" />
+                                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wide">Компанийн тойм</span>
                             </div>
                         </Reveal>
                         <Reveal delay={0.1}>
-                            <h2 className="text-4xl md:text-5xl font-bold text-navy-dark mb-8 leading-[1.1]">Санлиа хими ХХК</h2>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy-dark mb-6 sm:mb-8 leading-[1.1]">Санлиа хими ХХК</h2>
                         </Reveal>
                         <Reveal delay={0.2}>
-                            <div className="space-y-6 text-slate-600 leading-relaxed text-lg font-medium">
+                            <div className="space-y-4 sm:space-y-6 text-slate-600 leading-relaxed text-base sm:text-lg font-medium">
                                 <p>
                                     Санлиа хими ХХК нь 2013 онд үүсгэн байгуулагдсан. Үйлдвэрлэлийн зориулалттай техникийн болон химийн төрөл бүрийн бодис импортлох, худалдах тусгай зөвшөөрлийн хүрээнд үйл ажиллагаа эрхэлдэг компани юм.
                                 </p>
@@ -54,21 +54,21 @@ const About: React.FC = () => {
                             </div>
                         </Reveal>
                         <Reveal delay={0.3}>
-                            <div className="grid grid-cols-2 gap-12 mt-12 border-t border-slate-100 pt-12">
+                            <div className="grid grid-cols-2 gap-6 sm:gap-12 mt-8 sm:mt-12 border-t border-slate-100 pt-8 sm:pt-12">
                                 <div>
-                                    <p className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">2013</p>
-                                    <p className="text-sm font-bold text-navy-dark mt-2 uppercase tracking-wider">Үүсгэн байгуулагдсан</p>
+                                    <p className="text-3xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">2013</p>
+                                    <p className="text-xs sm:text-sm font-bold text-navy-dark mt-2 uppercase tracking-wider">Үүсгэн байгуулагдсан</p>
                                 </div>
                                 <div>
-                                    <p className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-500">400+</p>
-                                    <p className="text-sm font-bold text-navy-dark mt-2 uppercase tracking-wider">Нэр төрлийн бүтээгдэхүүн</p>
+                                    <p className="text-3xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-500">400+</p>
+                                    <p className="text-xs sm:text-sm font-bold text-navy-dark mt-2 uppercase tracking-wider">Нэр төрлийн бүтээгдэхүүн</p>
                                 </div>
                             </div>
                         </Reveal>
                     </div>
                     
                     <Reveal direction="left" delay={0.2}>
-                        <div className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl shadow-navy-dark/20 group">
+                        <div className="relative h-[350px] sm:h-[450px] md:h-[500px] lg:h-[600px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-navy-dark/20 group mt-8 lg:mt-0">
                             <div className="absolute inset-0 bg-navy-dark/20 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
                             <div 
                             className="w-full h-full bg-cover bg-center transform group-hover:scale-110 transition-transform duration-[1.5s]"

@@ -9,38 +9,38 @@ const Safety: React.FC = () => {
   return (
     <div className="w-full overflow-hidden">
         {/* Hero */}
-        <section className="relative w-full min-h-[60vh] flex items-center bg-navy-dark text-white overflow-hidden py-24 pt-32">
+        <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center bg-navy-dark text-white overflow-hidden py-16 sm:py-24 pt-24 sm:pt-32">
              <div 
                 className="absolute inset-0 z-0 opacity-20 bg-cover bg-center"
                 style={{ backgroundImage: `url("${IMAGES.map_bg}")` }}
              ></div>
              <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/95 to-navy-dark/60 z-10"></div>
              
-             <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center">
+             <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center py-8 sm:py-0">
                  <Reveal>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent w-fit mx-auto mb-8">
-                        <Shield size={18} />
-                        <span className="text-xs font-bold uppercase tracking-wide">Аюулгүй байдал нэгдүгээрт</span>
+                    <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 border border-accent/20 text-accent w-fit mx-auto mb-6 sm:mb-8">
+                        <Shield size={16} className="sm:w-[18px] sm:h-[18px]" />
+                        <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wide">Аюулгүй байдал нэгдүгээрт</span>
                     </div>
                  </Reveal>
                  <Reveal delay={0.1}>
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-8 leading-[1.1]">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 sm:mb-8 leading-[1.1]">
                         Бүтээгдэхүүн<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-400">Үйлчилгээ</span>
                     </h1>
                  </Reveal>
                  <Reveal delay={0.2}>
-                    <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-light">
+                    <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-light px-2">
                         Бид 350 гаруй төрлийн химийн бодисыг тусгай зөвшөөрлийн хүрээнд борлуулдаг ба нийлүүлэлтийн өмнө сургалт сурталчилгаа хийж, аюулгүй ажиллагааны зааварчилгаа өгдөг.
                     </p>
                  </Reveal>
                  <Reveal delay={0.3}>
-                    <div className="mt-10">
+                    <div className="mt-6 sm:mt-10">
                         <button 
                             onClick={() => navigate('/#contact')}
-                            className="bg-accent hover:bg-emerald-400 text-navy-dark h-14 px-10 rounded-full text-base font-bold transition-all shadow-xl shadow-accent/20 flex items-center gap-2 mx-auto hover:scale-105"
+                            className="bg-accent hover:bg-emerald-400 text-navy-dark h-12 sm:h-14 px-8 sm:px-10 rounded-full text-sm sm:text-base font-bold transition-all shadow-xl shadow-accent/20 flex items-center gap-2 mx-auto hover:scale-105 active:scale-95"
                         >
                             Зөвлөгөө авах
-                            <ArrowRight size={20} />
+                            <ArrowRight size={18} className="sm:w-5 sm:h-5" />
                         </button>
                     </div>
                  </Reveal>
